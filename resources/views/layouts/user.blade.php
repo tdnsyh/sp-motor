@@ -26,7 +26,7 @@
     <nav class="pc-sidebar">
         <div class="navbar-wrapper">
             <div class="m-header mt-3">
-                <a href="/admin" class="b-brand text-primary">
+                <a href="/user" class="b-brand text-primary">
                     <img src="{{ asset('assets/images/ddd.png') }}" class="img-fluid" width="125" alt="logo">
                     <span class="badge bg-light-success rounded-pill ms-2 theme-version">v1.0.1</span>
                 </a>
@@ -52,13 +52,9 @@
                         </div>
                         <div class="collapse pc-user-links" id="pc_sidebar_userlink">
                             <div class="pt-3">
-                                <a href="/admin">
+                                <a href="/user">
                                     <i class="ti ti-user"></i>
                                     <span>Akun</span>
-                                </a>
-                                <a href="/admin">
-                                    <i class="ti ti-settings"></i>
-                                    <span>Pengaturan</span>
                                 </a>
                                 <a href="#"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -82,48 +78,21 @@
                     </li>
 
                     <!-- Dashboard -->
-                    <li class="pc-item @if (Request::is('admin/')) active @endif">
-                        <a href="/admin" class="pc-link">
+                    <li class="pc-item @if (Request::is('user/')) active @endif">
+                        <a href="/user" class="pc-link">
                             <span class="pc-micon">
                                 <i class="ti ti-layout"></i>
                             </span>
                             <span class="pc-mtext">Dashboard</span>
                         </a>
                     </li>
-
-                    <!-- Gejala -->
-                    <li class="pc-item @if (Request::is('admin/gejala*')) active @endif">
-                        <a href="/admin/gejala" class="pc-link">
-                            <span class="pc-micon">
-                                <i class="ti ti-alert-circle"></i>
-                            </span>
-                            <span class="pc-mtext">Gejala</span>
-                        </a>
-                    </li>
-
-                    <!-- Kerusakan -->
-                    <li class="pc-item @if (Request::is('admin/kerusakan*')) active @endif">
-                        <a href="/admin/kerusakan" class="pc-link">
-                            <span class="pc-micon">
-                                <i class="ti ti-bug"></i>
-                            </span>
-                            <span class="pc-mtext">Kerusakan</span>
-                        </a>
-                    </li>
-
-                    <!-- Rules -->
-                    <li class="pc-item @if (Request::is('admin/rule*')) active @endif">
-                        <a href="/admin/rule" class="pc-link">
-                            <span class="pc-micon">
-                                <i class="ti ti-code"></i>
-                            </span>
-                            <span class="pc-mtext">Rules</span>
-                        </a>
+                    <li class="pc-item pc-caption">
+                        <label>Lainnya</label>
                     </li>
 
                     <!-- Riwayat -->
-                    <li class="pc-item @if (Request::is('admin/riwayat*')) active @endif">
-                        <a href="/admin/riwayat" class="pc-link">
+                    <li class="pc-item @if (Request::is('user/riwayat*')) active @endif">
+                        <a href="/user/riwayat" class="pc-link">
                             <span class="pc-micon">
                                 <i class="ti ti-history"></i>
                             </span>
@@ -132,8 +101,8 @@
                     </li>
 
                     <!-- Profil -->
-                    <li class="pc-item @if (Request::is('admin/profil*')) active @endif">
-                        <a href="/admin/profil" class="pc-link">
+                    <li class="pc-item @if (Request::is('user/profil*')) active @endif">
+                        <a href="/user/profil" class="pc-link">
                             <span class="pc-micon">
                                 <i class="ti ti-user"></i>
                             </span>

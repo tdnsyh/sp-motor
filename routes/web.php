@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Public\DiagnosaController;
 use App\Http\Controllers\Public\PublicController;
+use App\Http\Controllers\User\UserController;
 use App\Http\Middleware\RoleMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -11,23 +12,24 @@ Route::get('/', [PublicController::class, 'publicIndex']);
 
 //auth route
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/diagnosa', [DiagnosaController::class, 'form'])->name('diagnosa.form');
-Route::post('/diagnosa/hasil', [DiagnosaController::class, 'hasil'])->name('diagnosa.hasil');
 
-// media route
+// diagnosa
+Route::controller(DiagnosaController::class)->prefix('diagnosa')->name('diagnosa.')->group(function () {
+    Route::get('/panduan', 'panduan')->name('form');
+    Route::get('/form', 'form')->name('form');
+    Route::post('/hasil', 'hasil')->name('hasil');
+    Route::post('/simpan', 'simpan')->name('simpan');
+    Route::post('/cetak', 'cetak')->name('cetak');
+});
+
+// admin route
 Route::middleware(['auth', RoleMiddleware::class . ':admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [AdminController::class, 'dashboardAdmin'])->name('dashboard.index');
-
-    // donasi
-    Route::controller(AdminController::class)->prefix('donasi')->name('donasi.')->group(function () {
-        Route::get('/', 'campaignIndex')->name('index');
-        Route::get('/{campaign}/detail', 'campaignShow')->name('show');
-    });
 
     // gejala
     Route::controller(AdminController::class)->prefix('gejala')->name('gejala.')->group(function () {
@@ -57,6 +59,18 @@ Route::middleware(['auth', RoleMiddleware::class . ':admin'])->prefix('admin')->
         Route::get('/{kode_rule}/edit', 'ruleEdit')->name('edit');
         Route::put('/{kode_rule}', 'ruleUpdate')->name('update');
         Route::delete('/{kode_rule}', 'ruleDestroy')->name('destroy');
+    });
+
+});
+
+// user route
+Route::middleware(['auth', RoleMiddleware::class . ':user'])->prefix('user')->name('user.')->group(function () {
+    Route::get('/', [UserController::class, 'dashboardUser'])->name('dashboard.index');
+
+    // riwayat diagnosa
+    Route::controller(UserController::class)->prefix('riwayat')->name('riwayat.')->group(function () {
+        Route::get('/', 'userRiwayat')->name('index');
+        Route::get('/{id}/detail', 'userRiwayatDetail')->name('show');
     });
 
 });

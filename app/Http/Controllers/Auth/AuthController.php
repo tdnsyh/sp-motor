@@ -30,7 +30,7 @@ class AuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => 'admin',
+            'role' => 'user',
         ]);
 
         return redirect()->route('login')->with('success', 'Pendaftaran berhasil. Silakan login.');

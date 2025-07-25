@@ -46,6 +46,21 @@
                 @endforeach
             @endif
 
+            @if (auth()->check())
+                <form method="POST" action="{{ route('diagnosa.simpan') }}">
+                    @csrf
+                    <input type="hidden" name="gejala_terpilih" value="{{ json_encode(request('gejala')) }}">
+                    <input type="hidden" name="hasil_diagnosa" value="{{ json_encode($hasil) }}">
+                    <button type="submit" class="btn btn-success mb-4">Simpan ke Riwayat</button>
+                </form>
+            @endif
+            <form method="POST" action="{{ route('diagnosa.cetak') }}" target="_blank">
+                @csrf
+                <input type="hidden" name="gejala_terpilih" value="{{ json_encode(request('gejala')) }}">
+                <input type="hidden" name="hasil_diagnosa" value="{{ json_encode($hasil) }}">
+                <button type="submit" class="btn btn-primary">Cetak PDF</button>
+            </form>
+
             <a href="{{ route('diagnosa.form') }}" class="btn btn-secondary">Ulangi Diagnosa</a>
         </div>
     </section>
