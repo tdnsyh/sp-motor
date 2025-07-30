@@ -1,7 +1,7 @@
 <div class="sticky-top">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container">
-            <a class="navbar-brand" href="/">Navbar w/ text</a>
+            <a class="navbar-brand fw-bold" href="/">SP-BEAT</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -12,10 +12,10 @@
                         <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/diagnosa/form">Diagnosa</a>
+                        <a class="nav-link" href="/diagnosa/panduan">Diagnosa</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/tentang">Tentang</a>
+                        <a class="nav-link" href="/">Tentang</a>
                     </li>
                 </ul>
                 <span class="navbar-text">

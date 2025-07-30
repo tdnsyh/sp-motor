@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    {{-- navbar --}}
     @include('partials.navbar')
-    {{-- hero section --}}
     <div class="py-5">
         <div class="container">
             <div class="row row-cols-1 row-cols-md-2 g-3 align-items-center">
@@ -16,7 +14,7 @@
                     <h5>Sistem pakar berbasis web yang canggih dan responsif. Menggunakan metode forward chaining untuk
                         hasil diagnosa yang akurat dan cepat.</h5>
                     <div class="mt-3">
-                        <a href="/diagnosa/form" class="btn btn-primary btn-lg">Coba Diagnosa</a>
+                        <a href="/diagnosa/panduan" class="btn btn-primary btn-lg">Coba Diagnosa</a>
                         <a href="/tentang" class="btn text-primary bg-primary-subtle rounded btn-lg">Tentang Sistem</a>
                     </div>
                 </div>
@@ -78,6 +76,85 @@
             </div>
         </div>
     </div>
+
+    <section class="py-5">
+        <div class="container">
+            <row class="row row-cols-1 row-cols-md-2 g-4 d-flex justify-content-center">
+                <div class="col">
+                    <h2>Tentang pengembang</h2>
+                    <h1 class="display-2 fw-bold text-primary">Moch Tio Agustian</h1>
+                    <p>
+                        Saya adalah Moch Tio Agustian, mahasiswa Program Studi Sistem Informasi di Fakultas Sains dan
+                        Teknologi, Universitas Cipasung Tasikmalaya. Proyek tugas akhir ini saya buat sebagai bentuk
+                        implementasi dari ilmu yang telah saya pelajari, khususnya dalam menerapkan metode forward chaining
+                        untuk mendiagnosa kerusakan pada sistem kelistrikan motor Honda Beat.
+                    </p>
+                    <a href="/tentang" class="btn btn-lg text-primary bg-primary-subtle">Selengkapnya</a>
+                    <div class="rounded border p-4 bg-light mt-4">
+                        <p class="fw-bold mb-3">Identitas Pengembang</p>
+                        <div class="row mb-2 align-items-center">
+                            <div class="col-auto">
+                                <i class="ti ti-id fs-5 text-primary"></i>
+                            </div>
+                            <div class="col">
+                                <strong>NIM:</strong> 20210201017
+                            </div>
+                        </div>
+
+                        <div class="row mb-2 align-items-center">
+                            <div class="col-auto">
+                                <i class="ti ti-user fs-5 text-success"></i>
+                            </div>
+                            <div class="col">
+                                <strong>Nama:</strong> Moch Tio Agustian
+                            </div>
+                        </div>
+
+                        <div class="row mb-2 align-items-center">
+                            <div class="col-auto">
+                                <i class="ti ti-school fs-5 text-warning"></i>
+                            </div>
+                            <div class="col">
+                                <strong>Program Studi:</strong> Sistem Informasi
+                            </div>
+                        </div>
+
+                        <div class="row mb-2 align-items-center">
+                            <div class="col-auto">
+                                <i class="ti ti-building fs-5 text-danger"></i>
+                            </div>
+                            <div class="col">
+                                <strong>Fakultas:</strong> Sains dan Teknologi
+                            </div>
+                        </div>
+
+                        <div class="row mb-2 align-items-center">
+                            <div class="col-auto">
+                                <i class="ti ti-map-pin fs-5 text-secondary"></i>
+                            </div>
+                            <div class="col">
+                                <strong>Universitas:</strong> Cipasung Tasikmalaya
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center">
+                            <div class="col-auto">
+                                <i class="ti ti-calendar fs-5 text-info"></i>
+                            </div>
+                            <div class="col">
+                                <strong>Tahun:</strong> 2025
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <img src="{{ asset('assets/images/profil.jpg') }}" alt=""
+                        class="img-fluid object-fit-cover rounded h-auto">
+                </div>
+            </row>
+        </div>
+    </section>
+
     <section class="py-5">
         <div class="container">
             <h1 class="fw-semibold text-center mb-4">Cara Kerja Sistem</h1>
@@ -112,23 +189,153 @@
             </div>
         </div>
     </section>
-
-    <section class="py-4">
-        <div class="container">
-            <h1 class="fw-s">Lorem, ipsum dolor.</h1>
-            <div class="mt-3">
-                <a href="/diagnosa" class="btn text-info bg-info-subtle rounded">Diagnosa Sekarang</a>
-                <a href="/login" class="btn text-warning bg-warning-subtle rounded">Masuk</a>
-            </div>
-            <div class="mt-3">
-                <h1 class="py-2 px-3 rounded text-warning bg-warning-subtle d-inline-block">
-                    <i class="ti ti-code"></i>
-                </h1>
+    <section id="fitur-utama" class="py-5 bg-info bg-opacity-10">
+        <div class="container py-5">
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                <div class="col-md-4">
+                    <h1>Fitur Utama Sistem</h1>
+                </div>
+                <div class="col-md-8">
+                    <div class="row row-cols-2 g-4">
+                        <div class="col">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h1>
+                                        <i class="ti ti-bolt text-primary"></i>
+                                    </h1>
+                                    <h5 class="card-title">Diagnosa Cepat</h5>
+                                    <p class="card-text">Sistem memberikan hasil diagnosa hanya dalam hitungan detik.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h1>
+                                        <i class="ti ti-bolt text-info"></i>
+                                    </h1>
+                                    <h5 class="card-title">Forward Chaining</h5>
+                                    <p class="card-text">Menggunakan metode logika pakar untuk hasil yang akurat.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h1>
+                                        <i class="ti ti-tools text-primary"></i>
+                                    </h1>
+                                    <h5 class="card-title">Solusi Praktis</h5>
+                                    <p class="card-text">Memberikan saran perbaikan yang mudah dipahami dan diterapkan.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h1>
+                                        <i class="ti ti-device-mobile text-danger"></i>
+                                    </h1>
+                                    <h5 class="card-title">Akses Web</h5>
+                                    <p class="card-text">Dapat digunakan melalui perangkat apa saja yang terhubung
+                                        internet.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-    <footer class="mt-5 pt-4 border-top text-center small text-muted">
-        <p>Sistem Pakar Diagnosa Kerusakan Motor Honda Beat &copy; 2025</p>
-        <p>Disusun oleh Tedi Ansyah | Metode Forward Chaining</p>
-    </footer>
+
+    <section id="testimoni" class="py-5">
+        <div class="container">
+            <h1 class="text-center">Apa Kata Pengguna?</h1>
+            <div class="row g-4 mt-2">
+                <div class="col-md-4">
+                    <div class="card h-100 border">
+                        <div class="card-body">
+                            <p class="card-text">"Sistem ini sangat membantu! Saya bisa langsung tahu masalah pada motor
+                                saya tanpa harus ke bengkel dulu."</p>
+                        </div>
+                        <div class="card-footer bg-transparent border-0 d-flex align-items-center">
+                            <img src="https://i.pravatar.cc/50?img=12" class="rounded-circle me-3" alt="user"
+                                width="50" height="50">
+                            <div>
+                                <strong>Andi Saputra</strong><br>
+                                <small>Mahasiswa Teknik</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <p class="card-text">"Desainnya simpel dan mudah digunakan. Saya suka fitur forward
+                                chaining-nya, terasa pintar dan responsif."</p>
+                        </div>
+                        <div class="card-footer bg-transparent border-0 d-flex align-items-center">
+                            <img src="https://i.pravatar.cc/50?img=20" class="rounded-circle me-3" alt="user"
+                                width="50" height="50">
+                            <div>
+                                <strong>Rina Lestari</strong><br>
+                                <small>Tukang Servis Motor</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <p class="card-text">"Akurasi diagnosanya cukup tinggi. Saya tes beberapa kasus nyata dan
+                                hasilnya cocok."</p>
+                        </div>
+                        <div class="card-footer bg-transparent border-0 d-flex align-items-center">
+                            <img src="https://i.pravatar.cc/50?img=35" class="rounded-circle me-3" alt="user"
+                                width="50" height="50">
+                            <div>
+                                <strong>Budi Hermawan</strong><br>
+                                <small>Dosen Otomotif</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <p class="card-text">"Bermanfaat banget untuk saya yang sering utak-atik motor sendiri. Gak
+                                bingung lagi kalau lampu mati tiba-tiba."</p>
+                        </div>
+                        <div class="card-footer bg-transparent border-0 d-flex align-items-center">
+                            <img src="https://i.pravatar.cc/50?img=8" class="rounded-circle me-3" alt="user"
+                                width="50" height="50">
+                            <div>
+                                <strong>Fajar Nugroho</strong><br>
+                                <small>Pemilik Honda Beat</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <p class="card-text">"Saya rekomendasikan untuk teman-teman teknisi pemula. Solusinya detail
+                                dan logis."</p>
+                        </div>
+                        <div class="card-footer bg-transparent border-0 d-flex align-items-center">
+                            <img src="https://i.pravatar.cc/50?img=14" class="rounded-circle me-3" alt="user"
+                                width="50" height="50">
+                            <div>
+                                <strong>Siti Marlina</strong><br>
+                                <small>Siswa SMK Otomotif</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @include('partials.footer')
 @endsection

@@ -61,6 +61,17 @@ Route::middleware(['auth', RoleMiddleware::class . ':admin'])->prefix('admin')->
         Route::delete('/{kode_rule}', 'ruleDestroy')->name('destroy');
     });
 
+    // riwayat diagnosa
+    Route::controller(AdminController::class)->prefix('riwayat')->name('riwayat.')->group(function () {
+        Route::get('/', 'adminRiwayat')->name('index');
+        Route::get('/{id}/detail', 'userRiwayatDetail')->name('show');
+    });
+
+    // profil
+    Route::controller(AdminController::class)->prefix('profil')->name('profil.')->group(function () {
+        Route::get('/', 'profilIndex')->name('index');
+        Route::post('/update', 'profilUpdate')->name('update');
+    });
 });
 
 // user route
@@ -73,4 +84,9 @@ Route::middleware(['auth', RoleMiddleware::class . ':user'])->prefix('user')->na
         Route::get('/{id}/detail', 'userRiwayatDetail')->name('show');
     });
 
+    // profil
+    Route::controller(UserController::class)->prefix('profil')->name('profil.')->group(function () {
+        Route::get('/', 'profilIndex')->name('index');
+        Route::post('/update', 'profilUpdate')->name('update');
+    });
 });

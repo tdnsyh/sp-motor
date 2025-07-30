@@ -1,10 +1,10 @@
-@extends('layouts.user')
+@extends('layouts.admin')
 @section('title', 'Profil saya')
 
 @section('content')
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('user.profil.update') }}" method="POST">
+            <form action="{{ route('admin.profil.update') }}" method="POST">
                 @csrf
                 <div class="mb-3">
                     <label class="form-label">Nama</label>

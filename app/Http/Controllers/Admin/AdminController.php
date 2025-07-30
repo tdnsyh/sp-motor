@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Gejala;
 use App\Models\Kerusakan;
+use App\Models\RiwayatDiagnosa;
 use App\Models\Rule;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -16,11 +20,26 @@ class AdminController extends Controller
         $totalKerusakan = Kerusakan::count();
         $totalRule = Rule::distinct('kode_rule')->count('kode_rule');
 
-        return view('admin.index', compact(
-            'totalGejala',
-            'totalKerusakan',
-            'totalRule',
-        ));
+        $totalDiagnosa = RiwayatDiagnosa::count();
+
+        $penyakitTerbanyak = RiwayatDiagnosa::select('hasil_diagnosa', DB::raw('COUNT(*) AS jumlah'))
+            ->groupBy('hasil_diagnosa')
+            ->orderByDesc('jumlah')
+            ->first();
+
+        $riwayatTerbaru = RiwayatDiagnosa::latest()
+            ->take(3)
+            ->get();
+
+
+        return view('admin.index', [
+            'totalGejala' => $totalGejala,
+            'totalKerusakan' => $totalKerusakan,
+            'totalRule' => $totalRule,
+            'totalDiagnosa' => $totalDiagnosa,
+            'penyakitTerbanyak' => $penyakitTerbanyak?->hasil_diagnosa,
+            'riwayatTerbaru' =>$riwayatTerbaru,
+        ]);
     }
 
     // gejala
@@ -200,5 +219,44 @@ class AdminController extends Controller
     {
         Rule::where('kode_rule', $kode_rule)->delete();
         return redirect()->route('admin.rule.index')->with('success', "Rule $kode_rule berhasil dihapus.");
+    }
+
+    public function adminRiwayat()
+    {
+        $riwayats = RiwayatDiagnosa::latest()->get();
+
+        return view('admin.riwayat.index', compact('riwayats'));
+    }
+
+        public function profilIndex()
+    {
+        $title = 'Profil';
+        $user = Auth::user();
+        return view('admin.profil.index', compact('title', 'user'));
+    }
+
+    public function profilUpdate(Request $request)
+    {
+        $user = Auth::user();
+
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'password' => 'nullable|confirmed|min:6',
+        ]);
+
+        $data = [
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'updated_at' => now(),
+        ];
+
+        if (!empty($validated['password'])) {
+            $data['password'] = Hash::make($validated['password']);
+        }
+
+        DB::table('users')->where('id', $user->id)->update($data);
+
+        return back()->with('success', 'Profil berhasil diperbarui.');
     }
 }
