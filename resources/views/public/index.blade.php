@@ -19,8 +19,8 @@
                     </div>
                 </div>
                 <div class="col d-none d-md-block">
-                    <img src="https://boonsiewhonda.com.my/wp-content/uploads/2024/12/57.png" alt="Honda Beat"
-                        class="img-fluid object-fit-cover" />
+                    <img src="https://img.lazcdn.com/g/p/5ef1d2efc41bbfe4786b469cca41eaff.jpg_960x960q80.jpg_.webp"
+                        alt="Honda Beat" class="img-fluid object-fit-cover" />
                 </div>
             </div>
         </div>
