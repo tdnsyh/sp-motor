@@ -20,7 +20,7 @@
                 </div>
                 <div class="col d-none d-md-block">
                     <img src="https://img.lazcdn.com/g/p/5ef1d2efc41bbfe4786b469cca41eaff.jpg_960x960q80.jpg_.webp"
-                        alt="Honda Beat" class="img-fluid object-fit-cover" />
+                        alt="Honda Beat" class="img-fluid w-75" />
                 </div>
             </div>
         </div>
